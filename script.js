@@ -10,6 +10,7 @@ const addTask = (evento) =>{
   list.appendChild(task);
 }
 
+const taskList = [];
 
 const createTask = (evento) => {
   evento.preventDefault();
@@ -24,12 +25,15 @@ const createTask = (evento) => {
   input.value = '';
   //backticks
   const taskContent = document.createElement('div');
-  console.log(value, dateFormat)
+
   const taskObj = {
     value,
     dateFormat,
   };
-sessionStorage.setItem("task", JSON.stringify(taskObj));
+
+  taskList.push(taskObj);
+
+  localStorage.setItem("task", JSON.stringify(taskList));
 
   const titleTask = document.createElement('span');
   titleTask.classList.add('task');
